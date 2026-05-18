@@ -1,0 +1,185 @@
+<html lang='en'><head><link href='prism/prism.css' rel='stylesheet' /></head><body><script src='prism/prism.js'></script><body><div><pre><code class='language-html'>&lt;html xml:lang="en" dir="ltr"&gt;<br/>
+ &lt;head&gt;<br/>
+  &lt;meta http-equiv="Content-type" content="text/html;charset=iso-8859-1"&gt;<br/>
+  &lt;meta name="keywords" content="net2ftp, web, ftp, based, web-based, xftp, client, PHP, SSL, SSH, SSH2, password, server, free, gnu, gpl, gnu/gpl, net, net to ftp, netftp, connect, user, gui, interface, web2ftp, edit, editor, online, code, php, upload, download, copy, move, delete, zip, tar, unzip, untar, recursive, rename, chmod, syntax, highlighting, host, hosting, ISP, webserver, plan, bandwidth"&gt;<br/>
+  &lt;meta name="description" content="net2ftp is a web based FTP and SSH client. It is mainly aimed at managing websites using a browser. Edit code, upload/download files, copy/move/delete directories recursively, rename files and directories -- without installing any software."&gt;<br/>
+  &lt;link rel="shortcut icon" href="favicon.ico"&gt;<br/>
+  &lt;link rel="apple-touch-icon" href="favicon.png"&gt;<br/>
+  &lt;title&gt;net2ftp - a web based FTP client&lt;/title&gt;<br/>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br/>
+  &lt;script type="text/javascript"&gt;&lt;!--<br/>
+function CheckInput(form) {<br/>
+	if (form.ftpserver.value.length == 0) {<br/>
+		form.ftpserver.focus();<br/>
+		alert("Please enter an FTP server.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.ftpserver.value.length &gt; 254) {<br/>
+		form.ftpserver.focus();<br/>
+		alert("FTP server name is too long; please enter less than 255 characters.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.username.value.length == 0) {<br/>
+		form.username.focus();<br/>
+		alert("Please enter a username.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.username.value.length &gt; 254) {<br/>
+		form.username.focus();<br/>
+		alert("Username is too long; please enter less than 255 characters.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.user_email.value.length == 0) {<br/>
+		form.user_email.focus();<br/>
+		alert("Please enter your email address.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.user_email.value.length &gt; 254) {<br/>
+		form.user_email.focus();<br/>
+		alert("Email is too long; please enter less than 255 characters.");<br/>
+		return false;<br/>
+	}<br/>
+	if (form.privacy1.checked == false) {<br/>
+		alert("Please agree to all privacy policies.");<br/>
+		return false;<br/>
+	}<br/>
+	return true;<br/>
+}<br/>
+function GetFingerprint(form) {<br/>
+	result = CheckInput(form);<br/>
+	if (result == true) {<br/>
+		form.sshfingerprint.value = "Getting fingerprint, please wait...";<br/>
+		var http = new XMLHttpRequest();<br/>
+		var url = "index.xml.php";<br/>
+		var params = "protocol=FTP-SSH&ftpserver=" + form.ftpserver.value + "&state=serverfingerprint";<br/>
+		http.open("POST", url, true);<br/>
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");<br/>
+		http.onreadystatechange = function() {<br/>
+			if(http.readyState == 4 && http.status == 200) {<br/>
+	        		form.sshfingerprint.value = http.responseText;<br/>
+			}<br/>
+			else {<br/>
+				form.sshfingerprint.value = "Could not get fingerprint";<br/>
+			}<br/>
+		}<br/>
+		http.send(params);<br/>
+	}<br/>
+}<br/>
+function do_protocol(form) {<br/>
+	var protocol = form.protocol.value;<br/>
+	if (protocol == "FTP") {<br/>
+		form.ftpserverport.value = "21"<br/>
+	}<br/>
+	else if (protocol == "FTP-SSH") {<br/>
+		form.ftpserverport.value = "22";<br/>
+	}<br/>
+	else if (protocol == "FTP-SSL") {<br/>
+		form.ftpserverport.value = "990";<br/>
+	}<br/>
+	return true;<br/>
+}<br/>
+function do_anonymous(form) {<br/>
+	var checked = form.anonymous.checked;<br/>
+	if (checked == true) {<br/>
+		last_username = form.username.value;<br/>
+		last_password = form.password.value;<br/>
+		form.username.value = "anonymous";<br/>
+		form.password.value = "user@net2ftp.com";<br/>
+	} else {<br/>
+		form.username.value = last_username;<br/>
+		form.password.value = last_password;<br/>
+	}<br/>
+	return true;<br/>
+}<br/>
+function ClearCookies() {<br/>
+	document.forms['LoginForm'].state.value='clearcookies';<br/>
+	document.forms['LoginForm'].state2.value='';<br/>
+	document.forms['LoginForm'].submit();<br/>
+}<br/>
+//--&gt;&lt;/script&gt;&lt;!-- /skins/skins.inc.php javascript --&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/jquery-1.5.1.min.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/jquery-ui-1.8.13.custom.min.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/custom.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/hoverIntent.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/superfish.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/supersubs.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/poshytip-1.0/src/jquery.poshytip.min.js"&gt;&lt;/script&gt;&lt;!-- /skins/skins.inc.php css --&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/css/main_desktop.ltr.css" type="text/css" media="screen"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/skins/glossy/style.css" type="text/css" media="screen"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/js/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/js/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css"&gt;<br/>
+  &lt;style id="poshytip-css-tip-twitter" type="text/css"&gt;div.tip-twitter{visibility:hidden;position:absolute;top:0;left:0;}div.tip-twitter table, div.tip-twitter td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-twitter td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-twitter td.tip-right{background-position:100% 0;}div.tip-twitter td.tip-bottom{background-position:100% 100%;}div.tip-twitter td.tip-left{background-position:0 100%;}div.tip-twitter div.tip-inner{background-position:-10px -10px;}div.tip-twitter div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}&lt;/style&gt;<br/>
+  &lt;style id="poshytip-css-tip-yellowsimple" type="text/css"&gt;div.tip-yellowsimple{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellowsimple table, div.tip-yellowsimple td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellowsimple td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellowsimple td.tip-right{background-position:100% 0;}div.tip-yellowsimple td.tip-bottom{background-position:100% 100%;}div.tip-yellowsimple td.tip-left{background-position:0 100%;}div.tip-yellowsimple div.tip-inner{background-position:-10px -10px;}div.tip-yellowsimple div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}&lt;/style&gt;<br/>
+ &lt;/head&gt;<br/>
+ &lt;body onload=""&gt;&lt;!-- Template /skins/shinra/login.template.php begin --&gt; &lt;!-- Template /skins/shinra/login_other.template.php begin --&gt; &lt;!-- WRAPPER --&gt;<br/>
+  &lt;div id="wrapper"&gt;&lt;!-- HEADER --&gt;<br/>
+   &lt;div id="header"&gt;&lt;img id="logo" src="skins/shinra/img/logo.png" alt="net2ftp"&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS HEADER --&gt; &lt;!-- MAIN --&gt;<br/>
+   &lt;div id="main"&gt;&lt;!-- content --&gt;<br/>
+    &lt;div id="content"&gt;&lt;!-- title --&gt;<br/>
+     &lt;div id="page-title"&gt;&lt;span class="title"&gt;Login&lt;/span&gt; &lt;span class="subtitle"&gt;Connect to your FTP server and start editing your website now.&lt;/span&gt;<br/>
+     &lt;/div&gt;&lt;!-- ENDS title --&gt; &lt;!-- Posts --&gt;<br/>
+     &lt;div id="posts"&gt;&lt;!-- post --&gt;<br/>
+      &lt;div class="post"&gt;&lt;!-- Template /skins/shinra/loginform.php begin --&gt;<br/>
+       &lt;div id="accordion" class="accordion ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist"&gt;<br/>
+        &lt;h6 class="ui-accordion-header ui-helper-reset ui-state-default ui-state-active ui-corner-top" role="tab" aria-expanded="true" aria-selected="true" tabindex="0"&gt;&lt;span class="ui-icon ui-icon-triangle-1-s"&gt;&lt;/span&gt;&lt;a href="#" tabindex="-1"&gt;Basic FTP login&lt;/a&gt;&lt;/h6&gt;<br/>
+        &lt;div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" role="tabpanel"&gt;<br/>
+         &lt;form id="LoginForm1" action="/vvta/net2ftp/index.php" method="post" onsubmit="return CheckInput(this);"&gt;<br/>
+          &lt;fieldset&gt;<br/>
+           &lt;div&gt;&lt;h7&gt;<br/>
+             FTP server<br/>
+            &lt;/h7&gt; &lt;input type="text" name="ftpserver" value="" maxlength="254" class="form-poshytip" title="Example: ftp.server.com, 192.123.45.67"&gt; &lt;h7b&gt;<br/>
+             &lt;input type="text" name="ftpserverport" value="21" maxlength="5" style="width: 45px;" class="form-poshytip" title="Enter the FTP server port (21 for FTP, 22 for FTP SSH or 990 for FTP SSL) - if you're not sure leave it to 21"&gt;<br/>
+            &lt;/h7b&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div&gt;&lt;h7&gt;<br/>
+             Username<br/>
+            &lt;/h7&gt; &lt;input type="text" name="username" value="" maxlength="254" class="form-poshytip" title="Enter your username"&gt;<br/>
+           &lt;/div&gt;<br/>
+           &lt;div&gt;&lt;h7&gt;<br/>
+             Password<br/>
+            &lt;/h7&gt; &lt;input type="password" name="password" value="" class="form-poshytip" title="Enter your password"&gt;<br/>
+           &lt;/div&gt;&lt;input type="submit" id="LoginButton1" name="Login" value="Login" alt="Login" style="margin-top: 10px;"&gt;<br/>
+          &lt;/fieldset&gt;&lt;input type="hidden" name="consent_necessary" value="1"&gt; &lt;input type="hidden" name="consent_preferences" value="1"&gt; &lt;input type="hidden" name="consent_statistics" value="1"&gt; &lt;input type="hidden" name="consent_personalized_ads" value="0"&gt; &lt;input type="hidden" name="consent_nonpersonalized_ads" value="1"&gt; &lt;input type="hidden" name="protocol" value="FTP"&gt; &lt;input type="hidden" name="state" value="browse"&gt; &lt;input type="hidden" name="state2" value="main"&gt; &lt;input type="hidden" name="language" value="en"&gt;<br/>
+         &lt;/form&gt;<br/>
+        &lt;/div&gt;<br/>
+       &lt;/div&gt;<br/>
+       &lt;script type="text/javascript"&gt;&lt;!--<br/>
+	document.forms['LoginForm1'].ftpserver.focus();<br/>
+//--&gt;&lt;/script&gt;&lt;!-- Template /skins/shinra/loginform.php end --&gt;<br/>
+      &lt;/div&gt;&lt;!-- ENDS post --&gt;<br/>
+     &lt;/div&gt;&lt;!-- ENDS Posts --&gt; &lt;!-- sidebar --&gt;<br/>
+     &lt;ul id="sidebar"&gt;&lt;!-- init sidebar --&gt;<br/>
+      &lt;li&gt;<br/>
+       &lt;form id="LanguageForm" action="/vvta/net2ftp/index.php" method="post"&gt;&lt;select name="language" id="language" onchange="document.forms['LanguageForm'].submit();"&gt; &lt;option value="ar"&gt;Arabic UTF-8&lt;/option&gt; &lt;option value="zh"&gt;Simplified Chinese UTF-8&lt;/option&gt; &lt;option value="tc"&gt;Traditional Chinese&lt;/option&gt; &lt;option value="cs"&gt;Czech UTF-8&lt;/option&gt; &lt;option value="da"&gt;Danish UTF-8&lt;/option&gt; &lt;option value="nl"&gt;Dutch&lt;/option&gt; &lt;option value="en" selected&gt;English&lt;/option&gt; &lt;option value="en-utf"&gt;English UTF-8&lt;/option&gt; &lt;option value="fr"&gt;French UTF-8&lt;/option&gt; &lt;option value="de"&gt;German&lt;/option&gt; &lt;option value="fi"&gt;Finnish&lt;/option&gt; &lt;option value="he"&gt;Hebrew&lt;/option&gt; &lt;option value="hu"&gt;Hungarian&lt;/option&gt; &lt;option value="hu-utf"&gt;Hungarian UTF-8&lt;/option&gt; &lt;option value="it"&gt;Italian&lt;/option&gt; &lt;option value="ja"&gt;Japanese&lt;/option&gt; &lt;option value="pl"&gt;Polish&lt;/option&gt; &lt;option value="pt"&gt;Portugese&lt;/option&gt; &lt;option value="ru"&gt;Russian&lt;/option&gt; &lt;option value="es"&gt;Spanish&lt;/option&gt; &lt;option value="sv"&gt;Swedish&lt;/option&gt; &lt;option value="tr"&gt;Turkish&lt;/option&gt; &lt;option value="ua"&gt;Ukrainian&lt;/option&gt; &lt;option value="vi"&gt;Vietnamese UTF-8&lt;/option&gt; &lt;/select&gt;<br/>
+       &lt;/form&gt;&lt;/li&gt;<br/>
+      &lt;li&gt;&lt;h6&gt;Features&lt;/h6&gt;<br/>
+       &lt;ul&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Navigate the FTP server&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Upload and download files&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Edit files (WYSIWYG and syntax highlighting)&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;View code with syntax highlighting&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Copy, move, delete (also to 2nd FTP server)&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Rename and chmod (also recursive)&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Zip and unzip files&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Install software&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Search for words or phrases&lt;/a&gt;&lt;/li&gt;<br/>
+        &lt;li class="cat-item"&gt;&lt;a&gt;Calculate the size of directories and files&lt;/a&gt;&lt;/li&gt;<br/>
+       &lt;/ul&gt;&lt;/li&gt;&lt;!-- ENDS init sidebar --&gt;<br/>
+     &lt;/ul&gt;&lt;!-- ENDS sidebar --&gt; &lt;!-- Template /skins/shinra/footer.php begin --&gt;<br/>
+    &lt;/div&gt;&lt;!-- ENDS content --&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS MAIN --&gt; &lt;!-- FOOTER --&gt;<br/>
+   &lt;div id="footer"&gt;&lt;!-- Bottom --&gt;<br/>
+    &lt;div id="bottom"&gt;<br/>
+     Powered by &lt;a href="http://www.net2ftp.com"&gt;net2ftp&lt;/a&gt; on a template designed by &lt;a href="http://www.luiszuno.com"&gt;Luiszuno&lt;/a&gt;&lt;br&gt;&lt;a href="_privacy_policy.php"&gt;Privacy Policy&lt;/a&gt; | &lt;a href="_disclaimer.php"&gt;Disclaimer&lt;/a&gt;<br/>
+    &lt;/div&gt;&lt;!-- ENDS Bottom --&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS FOOTER --&gt;<br/>
+  &lt;/div&gt;&lt;!-- ENDS WRAPPER --&gt; &lt;!-- Template /skins/shinra/footer.php end --&gt; &lt;!-- Template /skins/shinra/login_other.template.php end --&gt; &lt;!-- Template /skins/shinra/login.template.php end --&gt;<br/>
+  &lt;div class="tip-yellowsimple" style="visibility: inherit; left: 547.743px; top: 331.4px; opacity: 0.412222;"&gt;<br/>
+   &lt;div class="tip-inner tip-bg-image"&gt;<br/>
+    Enter your username<br/>
+   &lt;/div&gt;<br/>
+   &lt;div class="tip-arrow tip-arrow-left" style="visibility: inherit;"&gt;&lt;/div&gt;<br/>
+  &lt;/div&gt;<br/>
+ &lt;/body&gt;<br/>
+&lt;/html&gt;</code></pre></div></body></html>

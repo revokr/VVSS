@@ -1,0 +1,2 @@
+server,username,password,directoryName1,directoryName2,message
+localhost,vvta1,vvta1,dir_TeSt_1,dir_TeSt_2,"You have logged out from the FTP server."

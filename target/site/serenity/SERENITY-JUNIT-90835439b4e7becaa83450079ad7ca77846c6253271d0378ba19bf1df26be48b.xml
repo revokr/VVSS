@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="1" failures="0" name="webFTP.features.login.valid.LoginTest" skipped="0" tests="1" time="0.38" timestamp="2026-05-11 08:43:05"><testcase classname="webFTP.features.login.valid.LoginTest" name="Login"><error message="'org.openqa.selenium.firefox.FirefoxOptions org.openqa.selenium.firefox.FirefoxOptions.setHeadless(boolean)'" type="java.lang.NoSuchMethodError">'org.openqa.selenium.firefox.FirefoxOptions org.openqa.selenium.firefox.FirefoxOptions.setHeadless(boolean)'</error><system-err>'org.openqa.selenium.firefox.FirefoxOptions org.openqa.selenium.firefox.FirefoxOptions.setHeadless(boolean)'&#13;
+webFTP.features.login.valid.LoginTest.login(LoginTest.java:35)&#13;
+</system-err></testcase></testsuite>

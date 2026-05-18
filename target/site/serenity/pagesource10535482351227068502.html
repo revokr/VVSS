@@ -1,0 +1,1012 @@
+<html lang='en'><head><link href='prism/prism.css' rel='stylesheet' /></head><body><script src='prism/prism.js'></script><body><div><pre><code class='language-html'>&lt;html xml:lang="en" dir="ltr"&gt;<br/>
+ &lt;head&gt;<br/>
+  &lt;meta http-equiv="Content-type" content="text/html;charset=iso-8859-1"&gt;<br/>
+  &lt;meta name="keywords" content="net2ftp, web, ftp, based, web-based, xftp, client, PHP, SSL, SSH, SSH2, password, server, free, gnu, gpl, gnu/gpl, net, net to ftp, netftp, connect, user, gui, interface, web2ftp, edit, editor, online, code, php, upload, download, copy, move, delete, zip, tar, unzip, untar, recursive, rename, chmod, syntax, highlighting, host, hosting, ISP, webserver, plan, bandwidth"&gt;<br/>
+  &lt;meta name="description" content="net2ftp is a web based FTP and SSH client. It is mainly aimed at managing websites using a browser. Edit code, upload/download files, copy/move/delete directories recursively, rename files and directories -- without installing any software."&gt;<br/>
+  &lt;link rel="shortcut icon" href="favicon.ico"&gt;<br/>
+  &lt;link rel="apple-touch-icon" href="favicon.png"&gt;<br/>
+  &lt;title&gt;net2ftp - a web based FTP client&lt;/title&gt;<br/>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br/>
+  &lt;script type="text/javascript" src="https://scs.ubbcluj.ro/vvta/net2ftp/modules/browse/browse_main.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript"&gt;&lt;!--<br/>
+function createDirectoryTreeWindow(directory, FormAndFieldName) {<br/>
+	directoryTreeWindow = window.open("","directoryTreeWindow","height=450,width=300,resizable=yes,scrollbars=yes");<br/>
+	var d = directoryTreeWindow.document;<br/>
+	d.writeln('&lt;html&gt;');<br/>
+	d.writeln('&lt;head&gt;');<br/>
+	d.writeln('&lt;title&gt;Choose a directory&lt;\/title&gt;');<br/>
+	d.writeln('&lt;\/head&gt;');<br/>
+	d.writeln('&lt;bo' + 'dy on' + 'load="document.DirectoryTreeForm.submit();"&gt;');<br/>
+	d.writeln('Please wait...&lt;br /&gt;&lt;br /&gt;');<br/>
+	d.writeln('&lt;form name="DirectoryTreeForm" id="DirectoryTreeForm" action="https://scs.ubbcluj.ro/vvta/net2ftp/index.php" method="post" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="skin"               value="shinra" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="language"           value="en" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="protocol"           value="FTP" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="ftpserver"          value="localhost" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="ftpserverport"      value="21" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="username"           value="vvta1" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="password_encrypted" value="758F7F0F0F" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="sshfingerprint"     value="" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="ftpmode"            value="automatic" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="passivemode"        value="no" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="viewmode"           value="list" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="sort"               value="" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="sortorder"          value="" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="consent_necessary"           value="1" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="consent_preferences"         value="1" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="consent_statistics"          value="1" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="consent_personalized_ads"    value="0" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="consent_nonpersonalized_ads" value="1" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="user_email"                  value="invalid_user_email" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="privacy1"           value="0" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="state" value="browse" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="state2" value="popup" /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="directory" value="' + directory + '"  /&gt;');<br/>
+	d.writeln('&lt;input type="hidden" name="FormAndFieldName" value="' + FormAndFieldName + '"  /&gt;');<br/>
+	d.writeln('&lt;\/form&gt;');<br/>
+	d.writeln('&lt;\/div&gt;');<br/>
+	d.writeln('&lt;\/body&gt;');<br/>
+	d.writeln('&lt;\/html&gt;');<br/>
+	d.close();<br/>
+} // end function createDirectoryTreeWindow<br/>
+//--&gt;&lt;/script&gt;&lt;!-- /skins/skins.inc.php javascript --&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/jquery-1.5.1.min.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/jquery-ui-1.8.13.custom.min.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/custom.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/hoverIntent.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/superfish.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/superfish-1.4.8/js/supersubs.js"&gt;&lt;/script&gt;<br/>
+  &lt;script type="text/javascript" src="skins/shinra/js/poshytip-1.0/src/jquery.poshytip.min.js"&gt;&lt;/script&gt;&lt;!-- /skins/skins.inc.php css --&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/css/main_desktop.ltr.css" type="text/css" media="screen"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/skins/glossy/style.css" type="text/css" media="screen"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/js/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css"&gt;<br/>
+  &lt;link rel="stylesheet" href="skins/shinra/js/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css"&gt;<br/>
+  &lt;style id="poshytip-css-tip-twitter" type="text/css"&gt;div.tip-twitter{visibility:hidden;position:absolute;top:0;left:0;}div.tip-twitter table, div.tip-twitter td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-twitter td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-twitter td.tip-right{background-position:100% 0;}div.tip-twitter td.tip-bottom{background-position:100% 100%;}div.tip-twitter td.tip-left{background-position:0 100%;}div.tip-twitter div.tip-inner{background-position:-10px -10px;}div.tip-twitter div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}&lt;/style&gt;<br/>
+  &lt;style id="poshytip-css-tip-yellowsimple" type="text/css"&gt;div.tip-yellowsimple{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellowsimple table, div.tip-yellowsimple td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellowsimple td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellowsimple td.tip-right{background-position:100% 0;}div.tip-yellowsimple td.tip-bottom{background-position:100% 100%;}div.tip-yellowsimple td.tip-left{background-position:0 100%;}div.tip-yellowsimple div.tip-inner{background-position:-10px -10px;}div.tip-yellowsimple div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}&lt;/style&gt;<br/>
+ &lt;/head&gt;<br/>
+ &lt;body onload=""&gt;&lt;!-- Template /skins/shinra/header.template.php begin --&gt; &lt;!-- WRAPPER --&gt;<br/>
+  &lt;div id="wrapper"&gt;&lt;!-- HEADER --&gt;<br/>
+   &lt;div id="header"&gt;&lt;img id="logo" src="skins/shinra/img/logo.png" alt="net2ftp"&gt; &lt;!-- Template /skins/ads/ad_browse_header.template.php begin --&gt; &lt;!-- Template /skins/ads/ad_browse_header.template.php end --&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS HEADER --&gt; &lt;!-- MAIN --&gt;<br/>
+   &lt;div id="main"&gt;&lt;!-- content --&gt;<br/>
+    &lt;div id="content"&gt;&lt;!-- title --&gt;<br/>
+     &lt;div id="page-title"&gt;&lt;span class="title"&gt;localhost&lt;/span&gt;<br/>
+      &lt;div style="text-align: right; margin-top: 10px;"&gt;<br/>
+       &lt;form id="StatusbarForm" method="post" action="/vvta/net2ftp/index.php"&gt;&lt;input type="hidden" name="skin" value="shinra"&gt; &lt;input type="hidden" name="language" value="en"&gt; &lt;input type="hidden" name="protocol" value="FTP"&gt; &lt;input type="hidden" name="ftpserver" value="localhost"&gt; &lt;input type="hidden" name="ftpserverport" value="21"&gt; &lt;input type="hidden" name="username" value="vvta1"&gt; &lt;input type="hidden" name="password_encrypted" value="758F7F0F0F"&gt; &lt;input type="hidden" name="sshfingerprint" value=""&gt; &lt;input type="hidden" name="ftpmode" value="automatic"&gt; &lt;input type="hidden" name="passivemode" value="no"&gt; &lt;input type="hidden" name="viewmode" value="list"&gt; &lt;input type="hidden" name="sort" value=""&gt; &lt;input type="hidden" name="sortorder" value=""&gt; &lt;input type="hidden" name="consent_necessary" value="1"&gt; &lt;input type="hidden" name="consent_preferences" value="1"&gt; &lt;input type="hidden" name="consent_statistics" value="1"&gt; &lt;input type="hidden" name="consent_personalized_ads" value="0"&gt; &lt;input type="hidden" name="consent_nonpersonalized_ads" value="1"&gt; &lt;input type="hidden" name="user_email" value="invalid_user_email"&gt; &lt;input type="hidden" name="privacy1" value="0"&gt; &lt;input type="hidden" name="state" value="browse"&gt; &lt;input type="hidden" name="state2" value="main"&gt; &lt;input type="hidden" name="directory" value="/home/vvta1"&gt; &lt;input type="hidden" name="url_withpw" value="/vvta/net2ftp/index.php?protocol=FTP&amp;amp;ftpserver=localhost&amp;amp;ftpserverport=21&amp;amp;sshfingerprint=&amp;amp;username=vvta1&amp;amp;password_encrypted=758F7F0F0F&amp;amp;language=en&amp;amp;skin=shinra&amp;amp;ftpmode=automatic&amp;amp;passivemode=no&amp;amp;viewmode=list&amp;amp;sort=&amp;amp;sortorder=&amp;amp;state=login_small&amp;amp;state2=bookmark&amp;amp;go_to_state=browse&amp;amp;go_to_state2=main&amp;amp;directory=%2Fhome%2Fvvta1&amp;amp;entry=&amp;privacy1=0"&gt; &lt;input type="hidden" name="url_withoutpw" value="/vvta/net2ftp/index.php?protocol=FTP&amp;amp;ftpserver=localhost&amp;amp;ftpserverport=21&amp;amp;sshfingerprint=&amp;amp;username=vvta1&amp;amp;language=en&amp;amp;skin=shinra&amp;amp;ftpmode=automatic&amp;amp;passivemode=no&amp;amp;viewmode=list&amp;amp;sort=&amp;amp;sortorder=&amp;amp;state=login_small&amp;amp;state2=bookmark&amp;amp;go_to_state=browse&amp;amp;go_to_state2=main&amp;amp;directory=%2Fhome%2Fvvta1&amp;amp;entry=&amp;privacy1=0"&gt; &lt;input type="hidden" name="text" value="net2ftp localhost"&gt; &lt;a href="javascript:document.forms['StatusbarForm'].state.value='bookmark';document.forms['StatusbarForm'].submit();" title="Bookmark (accesskey h)" accesskey="h"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/actions/bookmark.png" alt="Bookmark (accesskey h)" class="actionIcon" onmouseover="this.className='actionIconOver';" onmouseout="this.className='actionIconOut';"&gt;&lt;/a&gt; &lt;a href="javascript:window.location.reload();" title="Refresh (accesskey r)" accesskey="r"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/actions/reload.png" alt="Refresh (accesskey r)" class="actionIcon" onmouseover="this.className='actionIconOver';" onmouseout="this.className='actionIconOut';"&gt;&lt;/a&gt; &lt;a href="javascript:void(window.open('https://scs.ubbcluj.ro/vvta/net2ftp/modules/help/help-user.html','Help','location,menubar,resizable,scrollbars,status,toolbar'));" title="Help (accesskey i)" accesskey="i"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/actions/info.png" alt="Help (accesskey i)" class="actionIcon" onmouseover="this.className='actionIconOver';" onmouseout="this.className='actionIconOut';"&gt;&lt;/a&gt; &lt;a href="javascript:document.forms['StatusbarForm'].state.value='logout';document.forms['StatusbarForm'].submit();" title="Logout (accesskey l)" accesskey="l"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/actions/exit.png" alt="Logout (accesskey l)" class="actionIcon" onmouseover="this.className='actionIconOver';" onmouseout="this.className='actionIconOut';"&gt;&lt;/a&gt;<br/>
+       &lt;/form&gt;<br/>
+      &lt;/div&gt;<br/>
+     &lt;/div&gt;&lt;!-- ENDS title --&gt; &lt;!-- Template /skins/shinra/header.template.php end --&gt; &lt;!-- Template /skins/shinra/browse_main.template.php begin --&gt; &lt;!-- Template /skins/shinra/browse_main_details.template.php begin --&gt;<br/>
+     &lt;script type="text/javascript"&gt;&lt;!--\n";	<br/>
+function setColor_js(i, checkbox_hidden) {<br/>
+	// i contains the row number<br/>
+	// checkbox_hidden determines if the row has a checkbox, or hidden properties<br/>
+<br/>
+// Set the colors for the rows<br/>
+	if (i%2 == 1) { bgcolor_true = '#FFF'; fontcolor_true = '#696969'; bgcolor_false = '#FFF'; fontcolor_false = '#696969'; }<br/>
+	else          { bgcolor_true = '#FFF'; fontcolor_true = '#696969'; bgcolor_false = '#FFF'; fontcolor_false = '#696969'; }<br/>
+<br/>
+// Checkbox ==&gt; set the colors depending on the checkbox status<br/>
+// Hidden ==&gt; set the colors as for an unchecked checkbox<br/>
+	row_id = 'row' + i;<br/>
+	checkbox_id = 'list_' + i + '_dirfilename';<br/>
+	if (document.getElementById) {<br/>
+		if (checkbox_hidden == 'checkbox' && document.getElementById(checkbox_id).checked == true) { <br/>
+			document.getElementById(row_id).style.background = bgcolor_true;  document.getElementById(row_id).style.color = fontcolor_true; <br/>
+		} else { <br/>
+			document.getElementById(row_id).style.background = bgcolor_false; document.getElementById(row_id).style.color = fontcolor_false; <br/>
+		}<br/>
+	}<br/>
+	else if (document.all) {<br/>
+		if (checkbox_hidden == 'checkbox' && document.all[checkbox_id].checked == true) { <br/>
+			document.all[row_id].style.background = bgcolor_true;  document.all[row_id].style.color = fontcolor_true; <br/>
+		} else { <br/>
+			document.all[row_id].style.background = bgcolor_false; document.all[row_id].style.color = fontcolor_false; <br/>
+		}<br/>
+	}<br/>
+}<br/>
+//--&gt;&lt;/script&gt;&lt;!-- Template /skins/ads/ad_browse_list.template.php begin --&gt; &lt;!-- Template /skins/ads/ad_browse_list.template.php end --&gt;<br/>
+     &lt;form name="BrowseForm" id="BrowseForm" action="/vvta/net2ftp/index.php" method="post"&gt;&lt;input type="hidden" name="skin" value="shinra"&gt; &lt;input type="hidden" name="language" value="en"&gt; &lt;input type="hidden" name="protocol" value="FTP"&gt; &lt;input type="hidden" name="ftpserver" value="localhost"&gt; &lt;input type="hidden" name="ftpserverport" value="21"&gt; &lt;input type="hidden" name="username" value="vvta1"&gt; &lt;input type="hidden" name="password_encrypted" value="758F7F0F0F"&gt; &lt;input type="hidden" name="sshfingerprint" value=""&gt; &lt;input type="hidden" name="ftpmode" value="automatic"&gt; &lt;input type="hidden" name="passivemode" value="no"&gt; &lt;input type="hidden" name="viewmode" value="list"&gt; &lt;input type="hidden" name="sort" value=""&gt; &lt;input type="hidden" name="sortorder" value=""&gt; &lt;input type="hidden" name="consent_necessary" value="1"&gt; &lt;input type="hidden" name="consent_preferences" value="1"&gt; &lt;input type="hidden" name="consent_statistics" value="1"&gt; &lt;input type="hidden" name="consent_personalized_ads" value="0"&gt; &lt;input type="hidden" name="consent_nonpersonalized_ads" value="1"&gt; &lt;input type="hidden" name="user_email" value="invalid_user_email"&gt; &lt;input type="hidden" name="privacy1" value="0"&gt; &lt;input type="hidden" name="state" value="browse"&gt; &lt;input type="hidden" name="state2" value="main"&gt; &lt;input type="hidden" name="entry" value=""&gt; &lt;input type="text" name="directory" value="/home/vvta1" style="margin-left: 5px; width: 90%;" title="(accesskey g)" accesskey="g"&gt;<br/>
+      &lt;div style="font-size: 80%; margin-left: 5px;"&gt;<br/>
+       Directory Tree: &lt;a href="javascript:submitBrowseForm('/','','browse','main');"&gt;root&lt;/a&gt; /&lt;a href="javascript:submitBrowseForm('%2Fhome','','browse','main');"&gt;home&lt;/a&gt; /vvta1<br/>
+      &lt;/div&gt;<br/>
+      &lt;table id="buttontable" style="table-layout:fixed; width: 100%; margin: 0px;"&gt;<br/>
+       &lt;tbody&gt;<br/>
+        &lt;tr class="browse_rows_actions"&gt;<br/>
+         &lt;td&gt;&lt;input type="button" id="smallbutton" value="New dir" onclick="submitBrowseForm('/home/vvta1', '', 'newdir', '');" title="Make a new subdirectory in directory /home/vvta1 (accesskey w)" accesskey="w"&gt; &lt;input type="button" id="smallbutton" value="New file" onclick="submitBrowseForm('/home/vvta1', '', 'edit', 'newfile');" title="Create a new file in directory /home/vvta1 (accesskey y)" accesskey="y"&gt; &lt;input type="button" id="smallbutton" value="Upload" onclick="submitBrowseForm('/home/vvta1', '', 'upload', '');" title="Upload new files in directory /home/vvta1 (accesskey u)" accesskey="u"&gt; &lt;input type="button" id="smallbutton" value="Java Upload" onclick="submitBrowseForm('/home/vvta1', '', 'jupload', '');" title="Upload directories and files using a Java applet (accesskey p)" accesskey="j"&gt; &lt;input type="button" id="smallbutton" value="Install" onclick="submitBrowseForm('/home/vvta1', '', 'install', '');" title="Install software packages (requires PHP on web server) (accesskey k)" accesskey="k"&gt; &lt;input type="button" id="smallbutton" value="Advanced" onclick="submitBrowseForm('/home/vvta1', '', 'advanced', 'main');" title="Go to the advanced functions (accesskey n)" accesskey="n"&gt;<br/>
+          &lt;div style="display: block; margin-left: 0px;"&gt;<br/>
+           Transform selected entries: &lt;input type="button" id="smallbutton" value="Copy" onclick="submitBrowseForm('/home/vvta1', '', 'copymovedelete', 'copy');" title="Copy the selected entries (accesskey c)" accesskey="c"&gt; &lt;input type="button" id="smallbutton" value="Move" onclick="submitBrowseForm('/home/vvta1', '', 'copymovedelete', 'move');" title="Move the selected entries (accesskey m)" accesskey="m"&gt; &lt;input type="button" id="smallbutton" value="Delete" onclick="submitBrowseForm('/home/vvta1', '', 'copymovedelete', 'delete');" title="Delete the selected entries (accesskey d)" accesskey="d"&gt; &lt;input type="button" id="smallbutton" value="Rename" onclick="submitBrowseForm('/home/vvta1', '', 'rename', '');" title="Rename the selected entries (accesskey o)" accesskey="o"&gt; &lt;input type="button" id="smallbutton" value="Chmod" onclick="submitBrowseForm('/home/vvta1', '', 'chmod', '');" title="Chmod the selected entries (only works on Unix/Linux/BSD servers) (accesskey p)" accesskey="p"&gt; &lt;input type="button" id="smallbutton" value="Download" onclick="submitBrowseForm('/home/vvta1', '', 'downloadzip', '');" title="Download a zip file containing all selected entries (accesskey x)" accesskey="x"&gt; &lt;input type="button" id="smallbutton" value="Zip" onclick="submitBrowseForm('/home/vvta1', '', 'zip', 'zip');" title="Zip the selected entries to save or email them (accesskey z)" accesskey="z"&gt; &lt;input type="button" id="smallbutton" value="Unzip" onclick="submitBrowseForm('/home/vvta1', '', 'unzip', '');" title="Unzip the selected archives on the FTP server (accesskey i)" accesskey="i"&gt; &lt;input type="button" id="smallbutton" value="Size" onclick="submitBrowseForm('/home/vvta1', '', 'calculatesize', '');" title="Calculate the size of the selected entries (accesskey q)" accesskey="q"&gt; &lt;input type="button" id="smallbutton" value="Search" onclick="submitBrowseForm('/home/vvta1', '', 'findstring', '');" title="Find files which contain a particular word (accesskey f)" accesskey="f"&gt;<br/>
+          &lt;/div&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+       &lt;/tbody&gt;<br/>
+      &lt;/table&gt;<br/>
+      &lt;table id="maintable" style="table-layout:fixed; width: 100%; white-space: nowrap;"&gt;<br/>
+       &lt;tbody&gt;<br/>
+        &lt;tr class="browse_rows_heading"&gt;<br/>
+         &lt;td class="browse_col_select"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="CheckAll(document.BrowseForm);" title="Click to check or uncheck all rows (accesskey t)" accesskey="t"&gt;All&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('dirfilename','ascending');" title="Click to sort by Name in ascending order"&gt;Name&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('type','ascending');" title="Click to sort by Type in ascending order"&gt;Type&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('size','ascending');" title="Click to sort by Size in ascending order"&gt;Size&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('owner','ascending');" title="Click to sort by Owner in ascending order"&gt;Owner&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('group','ascending');" title="Click to sort by Group in ascending order"&gt;Group&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('permissions','ascending');" title="Click to sort by Perms in ascending order"&gt;Perms&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;&lt;a style="text-decoration: underline; cursor: pointer; cursor: hand;" onclick="do_sort('mtime','ascending');" title="Click to sort by Mod Time in ascending order"&gt;Mod Time&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; this.style.backgroundColor='#FFFFFF';"&gt;<br/>
+         &lt;td class="browse_col_select"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" title="Go to the parent directory" style="cursor: pointer; cursor: hand;" onclick="javascript:submitBrowseForm('/home', '', 'browse', 'main');"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" title="Go to the parent directory" style="cursor: pointer; cursor: hand;" onclick="javascript:submitBrowseForm('/home', '', 'browse', 'main');"&gt;&lt;a href="javascript:submitBrowseForm('%2Fhome','','browse','main');"&gt;Up ..&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row1" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(1, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/TestFolder1" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[1][dirfilename]" id="list_1_dirfilename" value="TestFolder1" onclick="setColor_js(1, 'checkbox');"&gt; &lt;input type="hidden" name="list[1][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[1][size]" value="4096"&gt; &lt;input type="hidden" name="list[1][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[1][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[1][mtime]" value="May 10 19:16"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/TestFolder1','','browse','main');" title="Go to the subdirectory TestFolder1" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/TestFolder1','','browse','main');" title="Go to the subdirectory TestFolder1" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/TestFolder1','','browse','main');"&gt;TestFolder1&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:16&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row2" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(2, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/abc" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[2][dirfilename]" id="list_2_dirfilename" value="abc" onclick="setColor_js(2, 'checkbox');"&gt; &lt;input type="hidden" name="list[2][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[2][size]" value="4096"&gt; &lt;input type="hidden" name="list[2][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[2][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[2][mtime]" value="May 11 17:30"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/abc','','browse','main');" title="Go to the subdirectory abc" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/abc','','browse','main');" title="Go to the subdirectory abc" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/abc','','browse','main');"&gt;abc&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:30&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row3" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(3, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/automation_test_dir" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[3][dirfilename]" id="list_3_dirfilename" value="automation_test_dir" onclick="setColor_js(3, 'checkbox');"&gt; &lt;input type="hidden" name="list[3][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[3][size]" value="4096"&gt; &lt;input type="hidden" name="list[3][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[3][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[3][mtime]" value="May 09 14:40"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/automation_test_dir','','browse','main');" title="Go to the subdirectory automation_test_dir" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/automation_test_dir','','browse','main');" title="Go to the subdirectory automation_test_dir" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/automation_test_dir','','browse','main');"&gt;automation_test_dir&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:40&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row4" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(4, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/bb" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[4][dirfilename]" id="list_4_dirfilename" value="bb" onclick="setColor_js(4, 'checkbox');"&gt; &lt;input type="hidden" name="list[4][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[4][size]" value="4096"&gt; &lt;input type="hidden" name="list[4][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[4][permissions]" value="rwxrwxrwx"&gt; &lt;input type="hidden" name="list[4][mtime]" value="May 10 01:08"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/bb','','browse','main');" title="Go to the subdirectory bb" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/bb','','browse','main');" title="Go to the subdirectory bb" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/bb','','browse','main');"&gt;bb&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwxrwxrwx&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 01:08&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row5" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(5, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/bbb" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[5][dirfilename]" id="list_5_dirfilename" value="bbb" onclick="setColor_js(5, 'checkbox');"&gt; &lt;input type="hidden" name="list[5][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[5][size]" value="4096"&gt; &lt;input type="hidden" name="list[5][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[5][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[5][mtime]" value="May 10 17:37"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/bbb','','browse','main');" title="Go to the subdirectory bbb" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/bbb','','browse','main');" title="Go to the subdirectory bbb" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/bbb','','browse','main');"&gt;bbb&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 17:37&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row6" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(6, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/dir_TeSt_2" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[6][dirfilename]" id="list_6_dirfilename" value="dir_TeSt_2" onclick="setColor_js(6, 'checkbox');"&gt; &lt;input type="hidden" name="list[6][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[6][size]" value="4096"&gt; &lt;input type="hidden" name="list[6][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[6][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[6][mtime]" value="May 11 21:01"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/dir_TeSt_2','','browse','main');" title="Go to the subdirectory dir_TeSt_2" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/dir_TeSt_2','','browse','main');" title="Go to the subdirectory dir_TeSt_2" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/dir_TeSt_2','','browse','main');"&gt;dir_TeSt_2&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 21:01&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row7" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(7, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/folder_redenumit_2" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[7][dirfilename]" id="list_7_dirfilename" value="folder_redenumit_2" onclick="setColor_js(7, 'checkbox');"&gt; &lt;input type="hidden" name="list[7][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[7][size]" value="4096"&gt; &lt;input type="hidden" name="list[7][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[7][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[7][mtime]" value="May 09 15:23"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/folder_redenumit_2','','browse','main');" title="Go to the subdirectory folder_redenumit_2" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/folder_redenumit_2','','browse','main');" title="Go to the subdirectory folder_redenumit_2" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/folder_redenumit_2','','browse','main');"&gt;folder_redenumit_2&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 15:23&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row8" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(8, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/gsrg 2" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[8][dirfilename]" id="list_8_dirfilename" value="gsrg 2" onclick="setColor_js(8, 'checkbox');"&gt; &lt;input type="hidden" name="list[8][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[8][size]" value="4096"&gt; &lt;input type="hidden" name="list[8][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[8][permissions]" value="rwxrwxrwx"&gt; &lt;input type="hidden" name="list[8][mtime]" value="Nov 15 2024"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/gsrg 2','','browse','main');" title="Go to the subdirectory gsrg 2" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/gsrg 2','','browse','main');" title="Go to the subdirectory gsrg 2" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/gsrg 2','','browse','main');"&gt;gsrg 2&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwxrwxrwx&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;Nov 15 2024&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row9" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(9, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/hello&amp;lt;&amp;gt;\~" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[9][dirfilename]" id="list_9_dirfilename" value="hello&lt;&gt;\~" onclick="setColor_js(9, 'checkbox');"&gt; &lt;input type="hidden" name="list[9][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[9][size]" value="4096"&gt; &lt;input type="hidden" name="list[9][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[9][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[9][mtime]" value="Nov 14 2024"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/hello&lt;&gt;\\~','','browse','main');" title="Go to the subdirectory hello&amp;lt;&amp;gt;\~" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/hello&lt;&gt;\\~','','browse','main');" title="Go to the subdirectory hello&amp;lt;&amp;gt;\~" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/hello&lt;&gt;\\~','','browse','main');"&gt;hello&lt;&gt;\~&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;Nov 14 2024&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row10" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(10, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/hello_redenumit_n" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[10][dirfilename]" id="list_10_dirfilename" value="hello_redenumit_n" onclick="setColor_js(10, 'checkbox');"&gt; &lt;input type="hidden" name="list[10][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[10][size]" value="4096"&gt; &lt;input type="hidden" name="list[10][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[10][permissions]" value="rwxrwx---"&gt; &lt;input type="hidden" name="list[10][mtime]" value="May 05 17:21"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/hello_redenumit_n','','browse','main');" title="Go to the subdirectory hello_redenumit_n" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/hello_redenumit_n','','browse','main');" title="Go to the subdirectory hello_redenumit_n" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/hello_redenumit_n','','browse','main');"&gt;hello_redenumit_n&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwxrwx---&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 05 17:21&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row11" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(11, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/net2ftp_temp_qjg6l" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[11][dirfilename]" id="list_11_dirfilename" value="net2ftp_temp_qjg6l" onclick="setColor_js(11, 'checkbox');"&gt; &lt;input type="hidden" name="list[11][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[11][size]" value="4096"&gt; &lt;input type="hidden" name="list[11][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[11][permissions]" value="rwxrwxrwx"&gt; &lt;input type="hidden" name="list[11][mtime]" value="May 11 17:19"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/net2ftp_temp_qjg6l','','browse','main');" title="Go to the subdirectory net2ftp_temp_qjg6l" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/net2ftp_temp_qjg6l','','browse','main');" title="Go to the subdirectory net2ftp_temp_qjg6l" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/net2ftp_temp_qjg6l','','browse','main');"&gt;net2ftp_temp_qjg6l&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwxrwxrwx&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:19&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row12" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(12, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/scenDirRenamed" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[12][dirfilename]" id="list_12_dirfilename" value="scenDirRenamed" onclick="setColor_js(12, 'checkbox');"&gt; &lt;input type="hidden" name="list[12][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[12][size]" value="4096"&gt; &lt;input type="hidden" name="list[12][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[12][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[12][mtime]" value="Apr 26 21:21"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/scenDirRenamed','','browse','main');" title="Go to the subdirectory scenDirRenamed" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/scenDirRenamed','','browse','main');" title="Go to the subdirectory scenDirRenamed" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/scenDirRenamed','','browse','main');"&gt;scenDirRenamed&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;Apr 26 21:21&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row13" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(13, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/test123_clemboss" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[13][dirfilename]" id="list_13_dirfilename" value="test123_clemboss" onclick="setColor_js(13, 'checkbox');"&gt; &lt;input type="hidden" name="list[13][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[13][size]" value="4096"&gt; &lt;input type="hidden" name="list[13][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[13][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[13][mtime]" value="May 09 13:04"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/test123_clemboss','','browse','main');" title="Go to the subdirectory test123_clemboss" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/test123_clemboss','','browse','main');" title="Go to the subdirectory test123_clemboss" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/test123_clemboss','','browse','main');"&gt;test123_clemboss&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 13:04&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row14" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(14, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/test123_georgiboss" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[14][dirfilename]" id="list_14_dirfilename" value="test123_georgiboss" onclick="setColor_js(14, 'checkbox');"&gt; &lt;input type="hidden" name="list[14][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[14][size]" value="4096"&gt; &lt;input type="hidden" name="list[14][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[14][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[14][mtime]" value="May 09 13:05"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/test123_georgiboss','','browse','main');" title="Go to the subdirectory test123_georgiboss" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/test123_georgiboss','','browse','main');" title="Go to the subdirectory test123_georgiboss" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/test123_georgiboss','','browse','main');"&gt;test123_georgiboss&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 13:05&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row15" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(15, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/testFolder" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[15][dirfilename]" id="list_15_dirfilename" value="testFolder" onclick="setColor_js(15, 'checkbox');"&gt; &lt;input type="hidden" name="list[15][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[15][size]" value="4096"&gt; &lt;input type="hidden" name="list[15][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[15][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[15][mtime]" value="May 10 00:55"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/testFolder','','browse','main');" title="Go to the subdirectory testFolder" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/testFolder','','browse','main');" title="Go to the subdirectory testFolder" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/testFolder','','browse','main');"&gt;testFolder&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 00:55&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row16" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(16, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/testFolderForUpload" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[16][dirfilename]" id="list_16_dirfilename" value="testFolderForUpload" onclick="setColor_js(16, 'checkbox');"&gt; &lt;input type="hidden" name="list[16][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[16][size]" value="4096"&gt; &lt;input type="hidden" name="list[16][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[16][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[16][mtime]" value="May 10 00:23"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/testFolderForUpload','','browse','main');" title="Go to the subdirectory testFolderForUpload" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/testFolderForUpload','','browse','main');" title="Go to the subdirectory testFolderForUpload" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/testFolderForUpload','','browse','main');"&gt;testFolderForUpload&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 00:23&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row17" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(17, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/test_dir_12345_redenumit_1" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[17][dirfilename]" id="list_17_dirfilename" value="test_dir_12345_redenumit_1" onclick="setColor_js(17, 'checkbox');"&gt; &lt;input type="hidden" name="list[17][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[17][size]" value="4096"&gt; &lt;input type="hidden" name="list[17][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[17][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[17][mtime]" value="May 07 15:50"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/test_dir_12345_redenumit_1','','browse','main');" title="Go to the subdirectory test_dir_12345_redenumit_1" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/test_dir_12345_redenumit_1','','browse','main');" title="Go to the subdirectory test_dir_12345_redenumit_1" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/test_dir_12345_redenumit_1','','browse','main');"&gt;test_dir_12345_redenumit_1&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 07 15:50&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row18" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(18, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/test_folder_1" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[18][dirfilename]" id="list_18_dirfilename" value="test_folder_1" onclick="setColor_js(18, 'checkbox');"&gt; &lt;input type="hidden" name="list[18][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[18][size]" value="4096"&gt; &lt;input type="hidden" name="list[18][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[18][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[18][mtime]" value="May 07 14:26"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/test_folder_1','','browse','main');" title="Go to the subdirectory test_folder_1" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/test_folder_1','','browse','main');" title="Go to the subdirectory test_folder_1" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/test_folder_1','','browse','main');"&gt;test_folder_1&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 07 14:26&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row19" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(19, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the directory /home/vvta1/teste_11_mai" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[19][dirfilename]" id="list_19_dirfilename" value="teste_11_mai" onclick="setColor_js(19, 'checkbox');"&gt; &lt;input type="hidden" name="list[19][dirorfile]" value="d"&gt; &lt;input type="hidden" name="list[19][size]" value="4096"&gt; &lt;input type="hidden" name="list[19][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[19][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[19][mtime]" value="May 11 17:35"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1/teste_11_mai','','browse','main');" title="Go to the subdirectory teste_11_mai" style="cursor: pointer; cursor: hand;;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/folder.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1/teste_11_mai','','browse','main');" title="Go to the subdirectory teste_11_mai" style="cursor: pointer; cursor: hand;;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1/teste_11_mai','','browse','main');"&gt;teste_11_mai&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type" style="width: 50px;"&gt;Directory&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;4096&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:35&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" colspan="3"&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row20" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(20, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file CreateFileInvalidParameterizedTest.java" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[20][dirfilename]" id="list_20_dirfilename" value="CreateFileInvalidParameterizedTest.java" onclick="setColor_js(20, 'checkbox');"&gt; &lt;input type="hidden" name="list[20][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[20][size]" value="1368"&gt; &lt;input type="hidden" name="list[20][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[20][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[20][mtime]" value="May 11 17:25"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','CreateFileInvalidParameterizedTest.java','downloadfile','');" title="Download the file CreateFileInvalidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/source_java.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','CreateFileInvalidParameterizedTest.java','downloadfile','');" title="Download the file CreateFileInvalidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','CreateFileInvalidParameterizedTest.java','downloadfile','');"&gt;CreateFileInvalidParameterizedTest.java&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Java source file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;1368&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:25&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateFileInvalidParameterizedTest.java', 'view', ''); return false;" title="View the highlighted source code of file CreateFileInvalidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateFileInvalidParameterizedTest.java', 'edit', ''); return false;" title="Edit the source code of file CreateFileInvalidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/CreateFileInvalidParameterizedTest.java');" style="cursor: pointer; cursor: hand;" title="View the file CreateFileInvalidParameterizedTest.java from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/CreateFileInvalidParameterizedTest.java"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row21" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(21, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file CreateFileValidParameterizedTest.java" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[21][dirfilename]" id="list_21_dirfilename" value="CreateFileValidParameterizedTest.java" onclick="setColor_js(21, 'checkbox');"&gt; &lt;input type="hidden" name="list[21][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[21][size]" value="1353"&gt; &lt;input type="hidden" name="list[21][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[21][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[21][mtime]" value="May 11 17:25"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','CreateFileValidParameterizedTest.java','downloadfile','');" title="Download the file CreateFileValidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/source_java.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','CreateFileValidParameterizedTest.java','downloadfile','');" title="Download the file CreateFileValidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','CreateFileValidParameterizedTest.java','downloadfile','');"&gt;CreateFileValidParameterizedTest.java&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Java source file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;1353&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:25&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateFileValidParameterizedTest.java', 'view', ''); return false;" title="View the highlighted source code of file CreateFileValidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateFileValidParameterizedTest.java', 'edit', ''); return false;" title="Edit the source code of file CreateFileValidParameterizedTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/CreateFileValidParameterizedTest.java');" style="cursor: pointer; cursor: hand;" title="View the file CreateFileValidParameterizedTest.java from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/CreateFileValidParameterizedTest.java"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row22" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(22, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file CreateValidDirectoryTest.java" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[22][dirfilename]" id="list_22_dirfilename" value="CreateValidDirectoryTest.java" onclick="setColor_js(22, 'checkbox');"&gt; &lt;input type="hidden" name="list[22][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[22][size]" value="1735"&gt; &lt;input type="hidden" name="list[22][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[22][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[22][mtime]" value="May 11 17:25"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','CreateValidDirectoryTest.java','downloadfile','');" title="Download the file CreateValidDirectoryTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/source_java.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','CreateValidDirectoryTest.java','downloadfile','');" title="Download the file CreateValidDirectoryTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','CreateValidDirectoryTest.java','downloadfile','');"&gt;CreateValidDirectoryTest.java&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Java source file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;1735&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:25&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateValidDirectoryTest.java', 'view', ''); return false;" title="View the highlighted source code of file CreateValidDirectoryTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'CreateValidDirectoryTest.java', 'edit', ''); return false;" title="Edit the source code of file CreateValidDirectoryTest.java" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/CreateValidDirectoryTest.java');" style="cursor: pointer; cursor: hand;" title="View the file CreateValidDirectoryTest.java from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/CreateValidDirectoryTest.java"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row23" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(23, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file a" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[23][dirfilename]" id="list_23_dirfilename" value="a" onclick="setColor_js(23, 'checkbox');"&gt; &lt;input type="hidden" name="list[23][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[23][size]" value="17"&gt; &lt;input type="hidden" name="list[23][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[23][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[23][mtime]" value="May 10 19:48"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','a','downloadfile','');" title="Download the file a" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/mime.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','a','downloadfile','');" title="Download the file a" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','a','downloadfile','');"&gt;a&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;A File&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:48&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'a', 'view', ''); return false;" title="View the highlighted source code of file a" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'a', 'edit', ''); return false;" title="Edit the source code of file a" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/a');" style="cursor: pointer; cursor: hand;" title="View the file a from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/a"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row24" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(24, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[24][dirfilename]" id="list_24_dirfilename" value="a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" onclick="setColor_js(24, 'checkbox');"&gt; &lt;input type="hidden" name="list[24][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[24][size]" value="17"&gt; &lt;input type="hidden" name="list[24][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[24][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[24][mtime]" value="May 09 12:36"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt','downloadfile','');" title="Download the file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt','downloadfile','');" title="Download the file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt','downloadfile','');"&gt;a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 12:36&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt', 'view', ''); return false;" title="View the highlighted source code of file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt', 'edit', ''); return false;" title="Edit the source code of file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt');" style="cursor: pointer; cursor: hand;" title="View the file a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/a_very_long_filename_to_test_if_it_shows_up_in_error_logs.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row25" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(25, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file automation_test_file.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[25][dirfilename]" id="list_25_dirfilename" value="automation_test_file.txt" onclick="setColor_js(25, 'checkbox');"&gt; &lt;input type="hidden" name="list[25][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[25][size]" value="17"&gt; &lt;input type="hidden" name="list[25][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[25][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[25][mtime]" value="May 09 14:20"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','automation_test_file.txt','downloadfile','');" title="Download the file automation_test_file.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','automation_test_file.txt','downloadfile','');" title="Download the file automation_test_file.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','automation_test_file.txt','downloadfile','');"&gt;automation_test_file.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:20&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'automation_test_file.txt', 'view', ''); return false;" title="View the highlighted source code of file automation_test_file.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'automation_test_file.txt', 'edit', ''); return false;" title="Edit the source code of file automation_test_file.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/automation_test_file.txt');" style="cursor: pointer; cursor: hand;" title="View the file automation_test_file.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/automation_test_file.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row26" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(26, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file copy_of_test.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[26][dirfilename]" id="list_26_dirfilename" value="copy_of_test.txt" onclick="setColor_js(26, 'checkbox');"&gt; &lt;input type="hidden" name="list[26][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[26][size]" value="15"&gt; &lt;input type="hidden" name="list[26][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[26][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[26][mtime]" value="May 09 14:04"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','copy_of_test.txt','downloadfile','');" title="Download the file copy_of_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','copy_of_test.txt','downloadfile','');" title="Download the file copy_of_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','copy_of_test.txt','downloadfile','');"&gt;copy_of_test.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;15&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:04&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'copy_of_test.txt', 'view', ''); return false;" title="View the highlighted source code of file copy_of_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'copy_of_test.txt', 'edit', ''); return false;" title="Edit the source code of file copy_of_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/copy_of_test.txt');" style="cursor: pointer; cursor: hand;" title="View the file copy_of_test.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/copy_of_test.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row27" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(27, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file f2_red.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[27][dirfilename]" id="list_27_dirfilename" value="f2_red.txt" onclick="setColor_js(27, 'checkbox');"&gt; &lt;input type="hidden" name="list[27][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[27][size]" value="34"&gt; &lt;input type="hidden" name="list[27][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[27][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[27][mtime]" value="May 10 19:59"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','f2_red.txt','downloadfile','');" title="Download the file f2_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','f2_red.txt','downloadfile','');" title="Download the file f2_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','f2_red.txt','downloadfile','');"&gt;f2_red.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:59&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f2_red.txt', 'view', ''); return false;" title="View the highlighted source code of file f2_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f2_red.txt', 'edit', ''); return false;" title="Edit the source code of file f2_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/f2_red.txt');" style="cursor: pointer; cursor: hand;" title="View the file f2_red.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/f2_red.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row28" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(28, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file f3_red.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[28][dirfilename]" id="list_28_dirfilename" value="f3_red.txt" onclick="setColor_js(28, 'checkbox');"&gt; &lt;input type="hidden" name="list[28][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[28][size]" value="34"&gt; &lt;input type="hidden" name="list[28][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[28][permissions]" value="rwx------"&gt; &lt;input type="hidden" name="list[28][mtime]" value="May 10 20:03"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','f3_red.txt','downloadfile','');" title="Download the file f3_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','f3_red.txt','downloadfile','');" title="Download the file f3_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','f3_red.txt','downloadfile','');"&gt;f3_red.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rwx------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 20:03&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f3_red.txt', 'view', ''); return false;" title="View the highlighted source code of file f3_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f3_red.txt', 'edit', ''); return false;" title="Edit the source code of file f3_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/f3_red.txt');" style="cursor: pointer; cursor: hand;" title="View the file f3_red.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/f3_red.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row29" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(29, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file f4_red.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[29][dirfilename]" id="list_29_dirfilename" value="f4_red.txt" onclick="setColor_js(29, 'checkbox');"&gt; &lt;input type="hidden" name="list[29][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[29][size]" value="34"&gt; &lt;input type="hidden" name="list[29][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[29][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[29][mtime]" value="May 11 18:48"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','f4_red.txt','downloadfile','');" title="Download the file f4_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','f4_red.txt','downloadfile','');" title="Download the file f4_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','f4_red.txt','downloadfile','');"&gt;f4_red.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 18:48&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f4_red.txt', 'view', ''); return false;" title="View the highlighted source code of file f4_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'f4_red.txt', 'edit', ''); return false;" title="Edit the source code of file f4_red.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/f4_red.txt');" style="cursor: pointer; cursor: hand;" title="View the file f4_red.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/f4_red.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row30" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(30, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fileToCopy.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[30][dirfilename]" id="list_30_dirfilename" value="fileToCopy.txt" onclick="setColor_js(30, 'checkbox');"&gt; &lt;input type="hidden" name="list[30][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[30][size]" value="15"&gt; &lt;input type="hidden" name="list[30][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[30][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[30][mtime]" value="May 09 14:12"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fileToCopy.txt','downloadfile','');" title="Download the file fileToCopy.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fileToCopy.txt','downloadfile','');" title="Download the file fileToCopy.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fileToCopy.txt','downloadfile','');"&gt;fileToCopy.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;15&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:12&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fileToCopy.txt', 'view', ''); return false;" title="View the highlighted source code of file fileToCopy.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fileToCopy.txt', 'edit', ''); return false;" title="Edit the source code of file fileToCopy.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fileToCopy.txt');" style="cursor: pointer; cursor: hand;" title="View the file fileToCopy.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fileToCopy.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row31" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(31, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file file_name1.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[31][dirfilename]" id="list_31_dirfilename" value="file_name1.txt" onclick="setColor_js(31, 'checkbox');"&gt; &lt;input type="hidden" name="list[31][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[31][size]" value="3"&gt; &lt;input type="hidden" name="list[31][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[31][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[31][mtime]" value="May 11 18:43"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','file_name1.txt','downloadfile','');" title="Download the file file_name1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','file_name1.txt','downloadfile','');" title="Download the file file_name1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','file_name1.txt','downloadfile','');"&gt;file_name1.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;3&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 18:43&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'file_name1.txt', 'view', ''); return false;" title="View the highlighted source code of file file_name1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'file_name1.txt', 'edit', ''); return false;" title="Edit the source code of file file_name1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/file_name1.txt');" style="cursor: pointer; cursor: hand;" title="View the file file_name1.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/file_name1.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row32" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(32, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file file_name2.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[32][dirfilename]" id="list_32_dirfilename" value="file_name2.txt" onclick="setColor_js(32, 'checkbox');"&gt; &lt;input type="hidden" name="list[32][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[32][size]" value="3"&gt; &lt;input type="hidden" name="list[32][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[32][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[32][mtime]" value="May 11 18:37"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','file_name2.txt','downloadfile','');" title="Download the file file_name2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','file_name2.txt','downloadfile','');" title="Download the file file_name2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','file_name2.txt','downloadfile','');"&gt;file_name2.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;3&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 18:37&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'file_name2.txt', 'view', ''); return false;" title="View the highlighted source code of file file_name2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'file_name2.txt', 'edit', ''); return false;" title="Edit the source code of file file_name2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/file_name2.txt');" style="cursor: pointer; cursor: hand;" title="View the file file_name2.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/file_name2.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row33" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(33, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fisier_creatie_123.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[33][dirfilename]" id="list_33_dirfilename" value="fisier_creatie_123.txt" onclick="setColor_js(33, 'checkbox');"&gt; &lt;input type="hidden" name="list[33][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[33][size]" value="17"&gt; &lt;input type="hidden" name="list[33][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[33][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[33][mtime]" value="May 10 19:38"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fisier_creatie_123.txt','downloadfile','');" title="Download the file fisier_creatie_123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fisier_creatie_123.txt','downloadfile','');" title="Download the file fisier_creatie_123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fisier_creatie_123.txt','downloadfile','');"&gt;fisier_creatie_123.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:38&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_creatie_123.txt', 'view', ''); return false;" title="View the highlighted source code of file fisier_creatie_123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_creatie_123.txt', 'edit', ''); return false;" title="Edit the source code of file fisier_creatie_123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fisier_creatie_123.txt');" style="cursor: pointer; cursor: hand;" title="View the file fisier_creatie_123.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fisier_creatie_123.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row34" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(34, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fisier_scenariu_test.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[34][dirfilename]" id="list_34_dirfilename" value="fisier_scenariu_test.txt" onclick="setColor_js(34, 'checkbox');"&gt; &lt;input type="hidden" name="list[34][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[34][size]" value="34"&gt; &lt;input type="hidden" name="list[34][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[34][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[34][mtime]" value="May 10 19:43"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test.txt','downloadfile','');" title="Download the file fisier_scenariu_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test.txt','downloadfile','');" title="Download the file fisier_scenariu_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fisier_scenariu_test.txt','downloadfile','');"&gt;fisier_scenariu_test.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:43&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test.txt', 'view', ''); return false;" title="View the highlighted source code of file fisier_scenariu_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test.txt', 'edit', ''); return false;" title="Edit the source code of file fisier_scenariu_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fisier_scenariu_test.txt');" style="cursor: pointer; cursor: hand;" title="View the file fisier_scenariu_test.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fisier_scenariu_test.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row35" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(35, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fisier_scenariu_test_1.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[35][dirfilename]" id="list_35_dirfilename" value="fisier_scenariu_test_1.txt" onclick="setColor_js(35, 'checkbox');"&gt; &lt;input type="hidden" name="list[35][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[35][size]" value="34"&gt; &lt;input type="hidden" name="list[35][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[35][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[35][mtime]" value="May 10 19:45"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test_1.txt','downloadfile','');" title="Download the file fisier_scenariu_test_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test_1.txt','downloadfile','');" title="Download the file fisier_scenariu_test_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fisier_scenariu_test_1.txt','downloadfile','');"&gt;fisier_scenariu_test_1.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:45&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test_1.txt', 'view', ''); return false;" title="View the highlighted source code of file fisier_scenariu_test_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test_1.txt', 'edit', ''); return false;" title="Edit the source code of file fisier_scenariu_test_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fisier_scenariu_test_1.txt');" style="cursor: pointer; cursor: hand;" title="View the file fisier_scenariu_test_1.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fisier_scenariu_test_1.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row36" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(36, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fisier_scenariu_test_2.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[36][dirfilename]" id="list_36_dirfilename" value="fisier_scenariu_test_2.txt" onclick="setColor_js(36, 'checkbox');"&gt; &lt;input type="hidden" name="list[36][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[36][size]" value="34"&gt; &lt;input type="hidden" name="list[36][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[36][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[36][mtime]" value="May 10 19:53"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test_2.txt','downloadfile','');" title="Download the file fisier_scenariu_test_2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fisier_scenariu_test_2.txt','downloadfile','');" title="Download the file fisier_scenariu_test_2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fisier_scenariu_test_2.txt','downloadfile','');"&gt;fisier_scenariu_test_2.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:53&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test_2.txt', 'view', ''); return false;" title="View the highlighted source code of file fisier_scenariu_test_2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_scenariu_test_2.txt', 'edit', ''); return false;" title="Edit the source code of file fisier_scenariu_test_2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fisier_scenariu_test_2.txt');" style="cursor: pointer; cursor: hand;" title="View the file fisier_scenariu_test_2.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fisier_scenariu_test_2.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row37" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(37, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file fisier_test.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[37][dirfilename]" id="list_37_dirfilename" value="fisier_test.txt" onclick="setColor_js(37, 'checkbox');"&gt; &lt;input type="hidden" name="list[37][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[37][size]" value="17"&gt; &lt;input type="hidden" name="list[37][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[37][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[37][mtime]" value="May 10 20:26"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','fisier_test.txt','downloadfile','');" title="Download the file fisier_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','fisier_test.txt','downloadfile','');" title="Download the file fisier_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','fisier_test.txt','downloadfile','');"&gt;fisier_test.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 20:26&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_test.txt', 'view', ''); return false;" title="View the highlighted source code of file fisier_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'fisier_test.txt', 'edit', ''); return false;" title="Edit the source code of file fisier_test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/fisier_test.txt');" style="cursor: pointer; cursor: hand;" title="View the file fisier_test.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/fisier_test.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row38" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(38, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file invalid.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[38][dirfilename]" id="list_38_dirfilename" value="invalid.txt" onclick="setColor_js(38, 'checkbox');"&gt; &lt;input type="hidden" name="list[38][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[38][size]" value="17"&gt; &lt;input type="hidden" name="list[38][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[38][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[38][mtime]" value="May 05 23:21"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','invalid.txt','downloadfile','');" title="Download the file invalid.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','invalid.txt','downloadfile','');" title="Download the file invalid.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','invalid.txt','downloadfile','');"&gt;invalid.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 05 23:21&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'invalid.txt', 'view', ''); return false;" title="View the highlighted source code of file invalid.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'invalid.txt', 'edit', ''); return false;" title="Edit the source code of file invalid.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/invalid.txt');" style="cursor: pointer; cursor: hand;" title="View the file invalid.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/invalid.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row39" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(39, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_file_1778442419537.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[39][dirfilename]" id="list_39_dirfilename" value="lab05_file_1778442419537.txt" onclick="setColor_js(39, 'checkbox');"&gt; &lt;input type="hidden" name="list[39][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[39][size]" value="17"&gt; &lt;input type="hidden" name="list[39][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[39][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[39][mtime]" value="May 10 22:47"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_file_1778442419537.txt','downloadfile','');" title="Download the file lab05_file_1778442419537.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_file_1778442419537.txt','downloadfile','');" title="Download the file lab05_file_1778442419537.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_file_1778442419537.txt','downloadfile','');"&gt;lab05_file_1778442419537.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 22:47&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_file_1778442419537.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_file_1778442419537.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_file_1778442419537.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_file_1778442419537.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_file_1778442419537.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_file_1778442419537.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_file_1778442419537.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row40" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(40, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_file_1778443144060.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[40][dirfilename]" id="list_40_dirfilename" value="lab05_file_1778443144060.txt" onclick="setColor_js(40, 'checkbox');"&gt; &lt;input type="hidden" name="list[40][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[40][size]" value="17"&gt; &lt;input type="hidden" name="list[40][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[40][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[40][mtime]" value="May 10 22:59"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_file_1778443144060.txt','downloadfile','');" title="Download the file lab05_file_1778443144060.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_file_1778443144060.txt','downloadfile','');" title="Download the file lab05_file_1778443144060.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_file_1778443144060.txt','downloadfile','');"&gt;lab05_file_1778443144060.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 22:59&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_file_1778443144060.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_file_1778443144060.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_file_1778443144060.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_file_1778443144060.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_file_1778443144060.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_file_1778443144060.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_file_1778443144060.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row41" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(41, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_invalid_search_context_1778449713888.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[41][dirfilename]" id="list_41_dirfilename" value="lab05_invalid_search_context_1778449713888.txt" onclick="setColor_js(41, 'checkbox');"&gt; &lt;input type="hidden" name="list[41][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[41][size]" value="17"&gt; &lt;input type="hidden" name="list[41][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[41][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[41][mtime]" value="May 11 00:48"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_invalid_search_context_1778449713888.txt','downloadfile','');" title="Download the file lab05_invalid_search_context_1778449713888.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_invalid_search_context_1778449713888.txt','downloadfile','');" title="Download the file lab05_invalid_search_context_1778449713888.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_invalid_search_context_1778449713888.txt','downloadfile','');"&gt;lab05_invalid_search_context_1778449713888.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 00:48&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_invalid_search_context_1778449713888.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_invalid_search_context_1778449713888.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_invalid_search_context_1778449713888.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_invalid_search_context_1778449713888.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_invalid_search_context_1778449713888.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_invalid_search_context_1778449713888.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_invalid_search_context_1778449713888.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row42" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(42, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_renamed_1778443949921.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[42][dirfilename]" id="list_42_dirfilename" value="lab05_renamed_1778443949921.txt" onclick="setColor_js(42, 'checkbox');"&gt; &lt;input type="hidden" name="list[42][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[42][size]" value="17"&gt; &lt;input type="hidden" name="list[42][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[42][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[42][mtime]" value="May 10 23:12"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778443949921.txt','downloadfile','');" title="Download the file lab05_renamed_1778443949921.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778443949921.txt','downloadfile','');" title="Download the file lab05_renamed_1778443949921.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_renamed_1778443949921.txt','downloadfile','');"&gt;lab05_renamed_1778443949921.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 23:12&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778443949921.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_renamed_1778443949921.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778443949921.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_renamed_1778443949921.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_renamed_1778443949921.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_renamed_1778443949921.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_renamed_1778443949921.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row43" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(43, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_renamed_1778444646142.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[43][dirfilename]" id="list_43_dirfilename" value="lab05_renamed_1778444646142.txt" onclick="setColor_js(43, 'checkbox');"&gt; &lt;input type="hidden" name="list[43][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[43][size]" value="17"&gt; &lt;input type="hidden" name="list[43][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[43][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[43][mtime]" value="May 10 23:24"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778444646142.txt','downloadfile','');" title="Download the file lab05_renamed_1778444646142.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778444646142.txt','downloadfile','');" title="Download the file lab05_renamed_1778444646142.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_renamed_1778444646142.txt','downloadfile','');"&gt;lab05_renamed_1778444646142.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 23:24&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778444646142.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_renamed_1778444646142.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778444646142.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_renamed_1778444646142.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_renamed_1778444646142.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_renamed_1778444646142.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_renamed_1778444646142.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row44" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(44, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_renamed_1778444971238.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[44][dirfilename]" id="list_44_dirfilename" value="lab05_renamed_1778444971238.txt" onclick="setColor_js(44, 'checkbox');"&gt; &lt;input type="hidden" name="list[44][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[44][size]" value="17"&gt; &lt;input type="hidden" name="list[44][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[44][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[44][mtime]" value="May 10 23:29"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778444971238.txt','downloadfile','');" title="Download the file lab05_renamed_1778444971238.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778444971238.txt','downloadfile','');" title="Download the file lab05_renamed_1778444971238.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_renamed_1778444971238.txt','downloadfile','');"&gt;lab05_renamed_1778444971238.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 23:29&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778444971238.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_renamed_1778444971238.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778444971238.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_renamed_1778444971238.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_renamed_1778444971238.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_renamed_1778444971238.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_renamed_1778444971238.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row45" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(45, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file lab05_renamed_1778445278233.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[45][dirfilename]" id="list_45_dirfilename" value="lab05_renamed_1778445278233.txt" onclick="setColor_js(45, 'checkbox');"&gt; &lt;input type="hidden" name="list[45][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[45][size]" value="17"&gt; &lt;input type="hidden" name="list[45][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[45][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[45][mtime]" value="May 10 23:34"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778445278233.txt','downloadfile','');" title="Download the file lab05_renamed_1778445278233.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','lab05_renamed_1778445278233.txt','downloadfile','');" title="Download the file lab05_renamed_1778445278233.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','lab05_renamed_1778445278233.txt','downloadfile','');"&gt;lab05_renamed_1778445278233.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 23:34&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778445278233.txt', 'view', ''); return false;" title="View the highlighted source code of file lab05_renamed_1778445278233.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'lab05_renamed_1778445278233.txt', 'edit', ''); return false;" title="Edit the source code of file lab05_renamed_1778445278233.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/lab05_renamed_1778445278233.txt');" style="cursor: pointer; cursor: hand;" title="View the file lab05_renamed_1778445278233.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/lab05_renamed_1778445278233.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row46" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(46, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file net2ftp_installer.php" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[46][dirfilename]" id="list_46_dirfilename" value="net2ftp_installer.php" onclick="setColor_js(46, 'checkbox');"&gt; &lt;input type="hidden" name="list[46][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[46][size]" value="248142"&gt; &lt;input type="hidden" name="list[46][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[46][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[46][mtime]" value="May 11 17:19"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','net2ftp_installer.php','downloadfile','');" title="Download the file net2ftp_installer.php" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/php.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','net2ftp_installer.php','downloadfile','');" title="Download the file net2ftp_installer.php" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','net2ftp_installer.php','downloadfile','');"&gt;net2ftp_installer.php&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;PHP script&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;248142&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 17:19&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'net2ftp_installer.php', 'view', ''); return false;" title="View the highlighted source code of file net2ftp_installer.php" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'net2ftp_installer.php', 'edit', ''); return false;" title="Edit the source code of file net2ftp_installer.php" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/net2ftp_installer.php');" style="cursor: pointer; cursor: hand;" title="View the file net2ftp_installer.php from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/net2ftp_installer.php"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row47" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(47, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file numeuackslash" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[47][dirfilename]" id="list_47_dirfilename" value="numeuackslash" onclick="setColor_js(47, 'checkbox');"&gt; &lt;input type="hidden" name="list[47][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[47][size]" value="17"&gt; &lt;input type="hidden" name="list[47][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[47][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[47][mtime]" value="May 10 20:19"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','numeuackslash','downloadfile','');" title="Download the file numeuackslash" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/mime.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','numeuackslash','downloadfile','');" title="Download the file numeuackslash" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','numeuackslash','downloadfile','');"&gt;numeuackslash&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;NUMEUACKSLASH File&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 20:19&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'numeuackslash', 'view', ''); return false;" title="View the highlighted source code of file numeuackslash" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'numeuackslash', 'edit', ''); return false;" title="Edit the source code of file numeuackslash" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/numeuackslash');" style="cursor: pointer; cursor: hand;" title="View the file numeuackslash from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/numeuackslash"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row48" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(48, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file renamedFile.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[48][dirfilename]" id="list_48_dirfilename" value="renamedFile.txt" onclick="setColor_js(48, 'checkbox');"&gt; &lt;input type="hidden" name="list[48][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[48][size]" value="7"&gt; &lt;input type="hidden" name="list[48][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[48][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[48][mtime]" value="May 09 14:11"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','renamedFile.txt','downloadfile','');" title="Download the file renamedFile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','renamedFile.txt','downloadfile','');" title="Download the file renamedFile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','renamedFile.txt','downloadfile','');"&gt;renamedFile.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;7&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:11&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'renamedFile.txt', 'view', ''); return false;" title="View the highlighted source code of file renamedFile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'renamedFile.txt', 'edit', ''); return false;" title="Edit the source code of file renamedFile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/renamedFile.txt');" style="cursor: pointer; cursor: hand;" title="View the file renamedFile.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/renamedFile.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row49" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(49, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file sample_upload.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[49][dirfilename]" id="list_49_dirfilename" value="sample_upload.txt" onclick="setColor_js(49, 'checkbox');"&gt; &lt;input type="hidden" name="list[49][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[49][size]" value="25"&gt; &lt;input type="hidden" name="list[49][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[49][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[49][mtime]" value="May 11 18:22"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','sample_upload.txt','downloadfile','');" title="Download the file sample_upload.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','sample_upload.txt','downloadfile','');" title="Download the file sample_upload.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','sample_upload.txt','downloadfile','');"&gt;sample_upload.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;25&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 18:22&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'sample_upload.txt', 'view', ''); return false;" title="View the highlighted source code of file sample_upload.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'sample_upload.txt', 'edit', ''); return false;" title="Edit the source code of file sample_upload.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/sample_upload.txt');" style="cursor: pointer; cursor: hand;" title="View the file sample_upload.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/sample_upload.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row50" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(50, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file searchMe.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[50][dirfilename]" id="list_50_dirfilename" value="searchMe.txt" onclick="setColor_js(50, 'checkbox');"&gt; &lt;input type="hidden" name="list[50][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[50][size]" value="14"&gt; &lt;input type="hidden" name="list[50][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[50][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[50][mtime]" value="May 09 14:12"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','searchMe.txt','downloadfile','');" title="Download the file searchMe.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','searchMe.txt','downloadfile','');" title="Download the file searchMe.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','searchMe.txt','downloadfile','');"&gt;searchMe.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;14&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:12&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'searchMe.txt', 'view', ''); return false;" title="View the highlighted source code of file searchMe.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'searchMe.txt', 'edit', ''); return false;" title="Edit the source code of file searchMe.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/searchMe.txt');" style="cursor: pointer; cursor: hand;" title="View the file searchMe.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/searchMe.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row51" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(51, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file t1.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[51][dirfilename]" id="list_51_dirfilename" value="t1.txt" onclick="setColor_js(51, 'checkbox');"&gt; &lt;input type="hidden" name="list[51][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[51][size]" value="21"&gt; &lt;input type="hidden" name="list[51][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[51][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[51][mtime]" value="May 10 16:23"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','t1.txt','downloadfile','');" title="Download the file t1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','t1.txt','downloadfile','');" title="Download the file t1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','t1.txt','downloadfile','');"&gt;t1.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;21&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 16:23&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 't1.txt', 'view', ''); return false;" title="View the highlighted source code of file t1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 't1.txt', 'edit', ''); return false;" title="Edit the source code of file t1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/t1.txt');" style="cursor: pointer; cursor: hand;" title="View the file t1.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/t1.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row52" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(52, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[52][dirfilename]" id="list_52_dirfilename" value="test.txt" onclick="setColor_js(52, 'checkbox');"&gt; &lt;input type="hidden" name="list[52][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[52][size]" value="3"&gt; &lt;input type="hidden" name="list[52][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[52][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[52][mtime]" value="May 11 18:11"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test.txt','downloadfile','');" title="Download the file test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test.txt','downloadfile','');" title="Download the file test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test.txt','downloadfile','');"&gt;test.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;3&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 18:11&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test.txt', 'view', ''); return false;" title="View the highlighted source code of file test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test.txt', 'edit', ''); return false;" title="Edit the source code of file test.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test.txt');" style="cursor: pointer; cursor: hand;" title="View the file test.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row53" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(53, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test1.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[53][dirfilename]" id="list_53_dirfilename" value="test1.txt" onclick="setColor_js(53, 'checkbox');"&gt; &lt;input type="hidden" name="list[53][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[53][size]" value="27"&gt; &lt;input type="hidden" name="list[53][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[53][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[53][mtime]" value="May 11 14:08"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test1.txt','downloadfile','');" title="Download the file test1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test1.txt','downloadfile','');" title="Download the file test1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test1.txt','downloadfile','');"&gt;test1.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;27&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 14:08&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test1.txt', 'view', ''); return false;" title="View the highlighted source code of file test1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test1.txt', 'edit', ''); return false;" title="Edit the source code of file test1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test1.txt');" style="cursor: pointer; cursor: hand;" title="View the file test1.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test1.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row54" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(54, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test11.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[54][dirfilename]" id="list_54_dirfilename" value="test11.txt" onclick="setColor_js(54, 'checkbox');"&gt; &lt;input type="hidden" name="list[54][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[54][size]" value="18"&gt; &lt;input type="hidden" name="list[54][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[54][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[54][mtime]" value="May 10 17:28"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test11.txt','downloadfile','');" title="Download the file test11.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test11.txt','downloadfile','');" title="Download the file test11.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test11.txt','downloadfile','');"&gt;test11.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;18&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 17:28&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test11.txt', 'view', ''); return false;" title="View the highlighted source code of file test11.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test11.txt', 'edit', ''); return false;" title="Edit the source code of file test11.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test11.txt');" style="cursor: pointer; cursor: hand;" title="View the file test11.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test11.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row55" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(55, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test2.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[55][dirfilename]" id="list_55_dirfilename" value="test2.txt" onclick="setColor_js(55, 'checkbox');"&gt; &lt;input type="hidden" name="list[55][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[55][size]" value="26"&gt; &lt;input type="hidden" name="list[55][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[55][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[55][mtime]" value="May 11 14:08"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test2.txt','downloadfile','');" title="Download the file test2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test2.txt','downloadfile','');" title="Download the file test2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test2.txt','downloadfile','');"&gt;test2.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;26&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 14:08&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test2.txt', 'view', ''); return false;" title="View the highlighted source code of file test2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test2.txt', 'edit', ''); return false;" title="Edit the source code of file test2.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test2.txt');" style="cursor: pointer; cursor: hand;" title="View the file test2.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test2.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row56" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(56, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test3.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[56][dirfilename]" id="list_56_dirfilename" value="test3.txt" onclick="setColor_js(56, 'checkbox');"&gt; &lt;input type="hidden" name="list[56][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[56][size]" value="39"&gt; &lt;input type="hidden" name="list[56][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[56][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[56][mtime]" value="May 11 14:08"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test3.txt','downloadfile','');" title="Download the file test3.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test3.txt','downloadfile','');" title="Download the file test3.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test3.txt','downloadfile','');"&gt;test3.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;39&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 14:08&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test3.txt', 'view', ''); return false;" title="View the highlighted source code of file test3.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test3.txt', 'edit', ''); return false;" title="Edit the source code of file test3.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test3.txt');" style="cursor: pointer; cursor: hand;" title="View the file test3.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test3.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row57" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(57, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test4.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[57][dirfilename]" id="list_57_dirfilename" value="test4.txt" onclick="setColor_js(57, 'checkbox');"&gt; &lt;input type="hidden" name="list[57][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[57][size]" value="22"&gt; &lt;input type="hidden" name="list[57][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[57][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[57][mtime]" value="May 10 17:29"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test4.txt','downloadfile','');" title="Download the file test4.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test4.txt','downloadfile','');" title="Download the file test4.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test4.txt','downloadfile','');"&gt;test4.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;22&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 17:29&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test4.txt', 'view', ''); return false;" title="View the highlighted source code of file test4.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test4.txt', 'edit', ''); return false;" title="Edit the source code of file test4.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test4.txt');" style="cursor: pointer; cursor: hand;" title="View the file test4.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test4.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row58" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(58, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file testFile123.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[58][dirfilename]" id="list_58_dirfilename" value="testFile123.txt" onclick="setColor_js(58, 'checkbox');"&gt; &lt;input type="hidden" name="list[58][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[58][size]" value="37"&gt; &lt;input type="hidden" name="list[58][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[58][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[58][mtime]" value="May 11 14:09"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','testFile123.txt','downloadfile','');" title="Download the file testFile123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','testFile123.txt','downloadfile','');" title="Download the file testFile123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','testFile123.txt','downloadfile','');"&gt;testFile123.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;37&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 11 14:09&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'testFile123.txt', 'view', ''); return false;" title="View the highlighted source code of file testFile123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'testFile123.txt', 'edit', ''); return false;" title="Edit the source code of file testFile123.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/testFile123.txt');" style="cursor: pointer; cursor: hand;" title="View the file testFile123.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/testFile123.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row59" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(59, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test_file_name.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[59][dirfilename]" id="list_59_dirfilename" value="test_file_name.txt" onclick="setColor_js(59, 'checkbox');"&gt; &lt;input type="hidden" name="list[59][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[59][size]" value="28"&gt; &lt;input type="hidden" name="list[59][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[59][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[59][mtime]" value="May 09 12:27"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test_file_name.txt','downloadfile','');" title="Download the file test_file_name.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test_file_name.txt','downloadfile','');" title="Download the file test_file_name.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test_file_name.txt','downloadfile','');"&gt;test_file_name.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;28&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 12:27&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_file_name.txt', 'view', ''); return false;" title="View the highlighted source code of file test_file_name.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_file_name.txt', 'edit', ''); return false;" title="Edit the source code of file test_file_name.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test_file_name.txt');" style="cursor: pointer; cursor: hand;" title="View the file test_file_name.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test_file_name.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row60" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(60, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test_fisier.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[60][dirfilename]" id="list_60_dirfilename" value="test_fisier.txt" onclick="setColor_js(60, 'checkbox');"&gt; &lt;input type="hidden" name="list[60][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[60][size]" value="20"&gt; &lt;input type="hidden" name="list[60][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[60][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[60][mtime]" value="May 10 19:21"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test_fisier.txt','downloadfile','');" title="Download the file test_fisier.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test_fisier.txt','downloadfile','');" title="Download the file test_fisier.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test_fisier.txt','downloadfile','');"&gt;test_fisier.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;20&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 10 19:21&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_fisier.txt', 'view', ''); return false;" title="View the highlighted source code of file test_fisier.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_fisier.txt', 'edit', ''); return false;" title="Edit the source code of file test_fisier.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test_fisier.txt');" style="cursor: pointer; cursor: hand;" title="View the file test_fisier.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test_fisier.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row61" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(61, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test_jetski.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[61][dirfilename]" id="list_61_dirfilename" value="test_jetski.txt" onclick="setColor_js(61, 'checkbox');"&gt; &lt;input type="hidden" name="list[61][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[61][size]" value="17"&gt; &lt;input type="hidden" name="list[61][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[61][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[61][mtime]" value="May 09 12:40"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test_jetski.txt','downloadfile','');" title="Download the file test_jetski.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test_jetski.txt','downloadfile','');" title="Download the file test_jetski.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test_jetski.txt','downloadfile','');"&gt;test_jetski.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;17&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 12:40&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_jetski.txt', 'view', ''); return false;" title="View the highlighted source code of file test_jetski.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_jetski.txt', 'edit', ''); return false;" title="Edit the source code of file test_jetski.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test_jetski.txt');" style="cursor: pointer; cursor: hand;" title="View the file test_jetski.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test_jetski.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_even" id="row62" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(62, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file test_redenumit_1.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[62][dirfilename]" id="list_62_dirfilename" value="test_redenumit_1.txt" onclick="setColor_js(62, 'checkbox');"&gt; &lt;input type="hidden" name="list[62][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[62][size]" value="5"&gt; &lt;input type="hidden" name="list[62][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[62][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[62][mtime]" value="May 09 17:06"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','test_redenumit_1.txt','downloadfile','');" title="Download the file test_redenumit_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','test_redenumit_1.txt','downloadfile','');" title="Download the file test_redenumit_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','test_redenumit_1.txt','downloadfile','');"&gt;test_redenumit_1.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;5&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 17:06&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_redenumit_1.txt', 'view', ''); return false;" title="View the highlighted source code of file test_redenumit_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'test_redenumit_1.txt', 'edit', ''); return false;" title="Edit the source code of file test_redenumit_1.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/test_redenumit_1.txt');" style="cursor: pointer; cursor: hand;" title="View the file test_redenumit_1.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/test_redenumit_1.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+        &lt;tr class="browse_rows_odd" id="row63" onmouseover="this.style.color='#FFF'; this.style.backgroundColor='#363636';" onmouseout="this.style.color='#696969'; setColor_js(63, 'checkbox');"&gt;<br/>
+         &lt;td class="browse_col_select" title="Select the file testfile.txt" style="text-align: center;"&gt;&lt;input type="checkbox" name="list[63][dirfilename]" id="list_63_dirfilename" value="testfile.txt" onclick="setColor_js(63, 'checkbox');"&gt; &lt;input type="hidden" name="list[63][dirorfile]" value="-"&gt; &lt;input type="hidden" name="list[63][size]" value="28"&gt; &lt;input type="hidden" name="list[63][selectable]" value="ok"&gt; &lt;input type="hidden" name="list[63][permissions]" value="rw-------"&gt; &lt;input type="hidden" name="list[63][mtime]" value="May 09 14:12"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mime" onclick="submitBrowseForm('/home/vvta1','testfile.txt','downloadfile','');" title="Download the file testfile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;img src="https://scs.ubbcluj.ro/vvta/net2ftp/skins/shinra/images/mime/document.png" alt="icon" style="width: 16px; height: 16px; border: 0px;"&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_dirfilename" onclick="submitBrowseForm('/home/vvta1','testfile.txt','downloadfile','');" title="Download the file testfile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="javascript:submitBrowseForm('/home/vvta1','testfile.txt','downloadfile','');"&gt;testfile.txt&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_type"&gt;Text file&lt;/td&gt;<br/>
+         &lt;td class="browse_col_size"&gt;28&lt;/td&gt;<br/>
+         &lt;td class="browse_col_owner"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_group"&gt;1001&lt;/td&gt;<br/>
+         &lt;td class="browse_col_permissions"&gt;rw-------&lt;/td&gt;<br/>
+         &lt;td class="browse_col_mtime"&gt;May 09 14:12&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'testfile.txt', 'view', ''); return false;" title="View the highlighted source code of file testfile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;View&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td class="browse_col_actions" onclick="submitBrowseForm('/home/vvta1', 'testfile.txt', 'edit', ''); return false;" title="Edit the source code of file testfile.txt" style="cursor: pointer; cursor: hand;"&gt;&lt;a href="#"&gt;Edit&lt;/a&gt;&lt;/td&gt;<br/>
+         &lt;td onclick="window.open('http://localhost/home/vvta1/testfile.txt');" style="cursor: pointer; cursor: hand;" title="View the file testfile.txt from your HTTP web server  (Note: This link may not work if you don't have your own domain name.)"&gt;&lt;a href="http://localhost/home/vvta1/testfile.txt"&gt;Open&lt;/a&gt;&lt;/td&gt;<br/>
+        &lt;/tr&gt;<br/>
+       &lt;/tbody&gt;<br/>
+      &lt;/table&gt;<br/>
+     &lt;/form&gt;<br/>
+     &lt;div style="font-size: 90%; margin-top: 10px; margin-left: 580px;"&gt;<br/>
+      Directories: 19&lt;br&gt;<br/>
+       Files: 44 / 247 kB&lt;br&gt;<br/>
+       Symlinks: 0&lt;br&gt;<br/>
+       Unrecognized FTP output: 0&lt;br&gt;<br/>
+     &lt;/div&gt;&lt;!-- Template /skins/shinra/footer.php begin --&gt;<br/>
+    &lt;/div&gt;&lt;!-- ENDS content --&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS MAIN --&gt; &lt;!-- FOOTER --&gt;<br/>
+   &lt;div id="footer"&gt;&lt;!-- Bottom --&gt;<br/>
+    &lt;div id="bottom"&gt;<br/>
+     Powered by &lt;a href="http://www.net2ftp.com"&gt;net2ftp&lt;/a&gt; on a template designed by &lt;a href="http://www.luiszuno.com"&gt;Luiszuno&lt;/a&gt;&lt;br&gt;&lt;a href="_privacy_policy.php"&gt;Privacy Policy&lt;/a&gt; | &lt;a href="_disclaimer.php"&gt;Disclaimer&lt;/a&gt;<br/>
+    &lt;/div&gt;&lt;!-- ENDS Bottom --&gt;<br/>
+   &lt;/div&gt;&lt;!-- ENDS FOOTER --&gt;<br/>
+  &lt;/div&gt;&lt;!-- ENDS WRAPPER --&gt; &lt;!-- Template /skins/shinra/footer.php end --&gt; &lt;!-- Template /skins/shinra/browse_main_details.template.php end --&gt; &lt;!-- Template /skins/shinra/browse_main.template.php end --&gt;<br/>
+ &lt;/body&gt;<br/>
+&lt;/html&gt;</code></pre></div></body></html>
