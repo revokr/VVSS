@@ -35,12 +35,7 @@ public class CreateValidDirectoryTest {
     public void createNewDirectory() {
         //user.go_to_Login_page();
         // Encode credentials and pass via Chrome DevTools
-        webdriver.get("about:blank");
-        ((org.openqa.selenium.JavascriptExecutor) webdriver).executeScript(
-            "var xhr = new XMLHttpRequest();" +
-            "xhr.open('GET', 'https://scs.ubbcluj.ro/vvta/net2ftp/index.php', false, 'vvss', 'strugure');" +
-            "xhr.send();"
-        );
+        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
         webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         user.click_saveCookies();
         user.login_steps("localhost", "vvta1", "vvta1");//valid data

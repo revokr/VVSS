@@ -46,12 +46,7 @@ public class MultipleStepsTest {
     public void completeDirectoryWorkflowScenario() {
         // STEP 1: Login with provided credentials
         // Encode credentials and pass via Chrome DevTools
-        webdriver.get("about:blank");
-        ((org.openqa.selenium.JavascriptExecutor) webdriver).executeScript(
-            "var xhr = new XMLHttpRequest();" +
-            "xhr.open('GET', 'https://scs.ubbcluj.ro/vvta/net2ftp/index.php', false, 'vvss', 'strugure');" +
-            "xhr.send();"
-        );
+        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
         webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         user.click_saveCookies();
         user.login_steps(server, username, password);
