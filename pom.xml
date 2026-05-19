@@ -15,7 +15,8 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <serenity.version>3.9.8</serenity.version>
-        <webdriver.driver>firefox</webdriver.driver>
+        <webdriver.driver>chrome</webdriver.driver>
+        <headless.mode>true</headless.mode>
     </properties>
 
     <repositories>
@@ -33,7 +34,7 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-bom</artifactId>
-                <version>4.10.0</version>
+                <version>4.25.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -63,10 +64,16 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Selenium 4.15.0 (via BOM for version management) -->
+        <!-- Selenium (versions managed by BOM) -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -88,7 +95,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.7.0</version>
+            <version>5.9.2</version>
         </dependency>
 
         <!-- Gson -->
@@ -139,6 +146,7 @@
                     <argLine>-Xmx512m</argLine>
                     <systemPropertyVariables>
                         <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                        <headless.mode>${headless.mode}</headless.mode>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -167,4 +175,25 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Auto-activated when running on Jenkins -->
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <property><name>env.JENKINS_HOME</name></property>
+            </activation>
+            <properties>
+                <headless.mode>true</headless.mode>
+            </properties>
+        </profile>
+
+        <!-- Run with -Pheaded for local headed testing -->
+        <profile>
+            <id>headed</id>
+            <properties>
+                <headless.mode>false</headless.mode>
+            </properties>
+        </profile>
+    </profiles>
 </project>
