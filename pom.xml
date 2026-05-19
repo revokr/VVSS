@@ -15,8 +15,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <serenity.version>3.9.8</serenity.version>
-        <webdriver.driver>chrome</webdriver.driver>
-        <headless.mode>true</headless.mode>
+        <selenium.version>4.27.0</selenium.version>
     </properties>
 
     <repositories>
@@ -30,11 +29,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Control Selenium version across all transitive deps -->
+            <!-- Manages versions for all Selenium artifacts including devtools -->
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-bom</artifactId>
-                <version>4.25.0</version>
+                <version>${selenium.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -64,17 +63,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Selenium (versions managed by BOM) -->
+        <!-- Selenium core (version from BOM) -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- CDP support for Chrome — provides HasAuthentication.register() for basic auth -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v129</artifactId>
-            <version>4.25.0</version>
+            <artifactId>selenium-devtools-v131</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -178,25 +177,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <!-- Auto-activated when running on Jenkins -->
-        <profile>
-            <id>jenkins</id>
-            <activation>
-                <property><name>env.JENKINS_HOME</name></property>
-            </activation>
-            <properties>
-                <headless.mode>true</headless.mode>
-            </properties>
-        </profile>
-
-        <!-- Run with -Pheaded for local headed testing -->
-        <profile>
-            <id>headed</id>
-            <properties>
-                <headless.mode>false</headless.mode>
-            </properties>
-        </profile>
-    </profiles>
 </project>
