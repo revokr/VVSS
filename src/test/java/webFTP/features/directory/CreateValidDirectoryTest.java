@@ -5,6 +5,8 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.HasAuthentication;
+import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebDriver;
 import webFTP.steps.serenity.*;
 
@@ -32,7 +34,9 @@ public class CreateValidDirectoryTest {
     @Test
     public void createNewDirectory() {
         //user.go_to_Login_page();
-        webdriver.get("https://vvss:strugure@scs.ubbcluj.ro/vvta/net2ftp/index.php");
+        // Encode credentials and pass via Chrome DevTools
+        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
+        webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         user.click_saveCookies();
         user.login_steps("localhost", "vvta1", "vvta1");//valid data
         userLoggedIn.should_be_in_user_directory("/home/"+"vvta1");

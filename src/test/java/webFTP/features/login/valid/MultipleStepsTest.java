@@ -7,6 +7,8 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.HasAuthentication;
+import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebDriver;
 import webFTP.steps.serenity.*;
 
@@ -43,7 +45,9 @@ public class MultipleStepsTest {
     @Test
     public void completeDirectoryWorkflowScenario() {
         // STEP 1: Login with provided credentials
-        webdriver.get("https://vvss:strugure@scs.ubbcluj.ro/vvta/net2ftp/index.php");
+        // Encode credentials and pass via Chrome DevTools
+        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
+        webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         user.click_saveCookies();
         user.login_steps(server, username, password);
         userLoggedIn.should_be_in_user_directory("/home/" + username);

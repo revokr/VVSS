@@ -7,6 +7,8 @@ import net.thucydides.core.annotations.Steps;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.HasAuthentication;
+import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebDriver;
 
 import webFTP.steps.serenity.AccountPageSteps;
@@ -32,7 +34,9 @@ public class LoginTest {
     @Test
     public void login() {
         //loginPage.go_to_Login_page();
-        webdriver.get("https://vvss:strugure@scs.ubbcluj.ro/vvta/net2ftp/index.php");
+        // Encode credentials and pass via Chrome DevTools
+        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
+        webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         loginPage.click_saveCookies();
         loginPage.login_steps("localhost","vvta1", "vvta1");
         accountPage.should_be_in_user_directory("/home/"+"vvta");
