@@ -144,10 +144,6 @@
                         <include>**/Test*.java</include>
                     </includes>
                     <argLine>-Xmx512m</argLine>
-                    <systemPropertyVariables>
-                        <webdriver.driver>${webdriver.driver}</webdriver.driver>
-                        <headless.mode>${headless.mode}</headless.mode>
-                    </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>
