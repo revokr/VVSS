@@ -37,7 +37,12 @@ public class LoginParameterizedTest {
         // Encode credentials and pass via Chrome DevTools
         ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
         // Encode credentials and pass via Chrome DevTools
-        ((HasAuthentication) webdriver).register(UsernameAndPassword.of("vvss", "strugure"));
+        webdriver.get("about:blank");
+        ((org.openqa.selenium.JavascriptExecutor) webdriver).executeScript(
+            "var xhr = new XMLHttpRequest();" +
+            "xhr.open('GET', 'https://scs.ubbcluj.ro/vvta/net2ftp/index.php', false, 'vvss', 'strugure');" +
+            "xhr.send();"
+        );
         webdriver.get("https://scs.ubbcluj.ro/vvta/net2ftp/index.php");
         loginPage.click_saveCookies();
         loginPage.login_steps(server,user, pass);
